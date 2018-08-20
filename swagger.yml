@@ -1,0 +1,38 @@
+openapi: 3.0.1
+info:
+  description: GoliGoli TV Restful API document
+  title: GoliGoli TV API
+  version: pre-alpha
+components:
+  parameters: {}
+  schemas:
+    ErrorResponse:
+      properties:
+        code:
+          description: HTTP status code alike status inficator
+          example: 403
+          type: int
+        message:
+          description: User friendly message to prompt 
+          example: 您访问的资源需要登录，请登录后重试
+          type: string
+      required: [code, message]
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
+servers:
+  - description: The production API server
+    url: https://goligoli.tv/{basePath}
+    variables:
+      basePath:
+        default: pre-alpha
+        enum: [pre-alphe]
+  - description: The development API server
+    url: http://localhost:{port}/
+    variables:
+      port: { default: "3000" }
+tags:
+  - name: User
