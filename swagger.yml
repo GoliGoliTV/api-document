@@ -6,14 +6,41 @@ info:
 components:
   parameters: {}
   schemas:
+    VideoCategoryNode:
+      properties:
+        name:
+          description: category node name
+          example: 动漫
+          type: string
+        childNodes:
+          description: category childs
+          example: null
+          type: object
+    VideoDetail:
+      properties:
+        id:
+          type: interger
+          example: 1000111101
+        title:
+          type: string
+          example: "末日时在做什么？有没有空？ #12"
+        category:
+          type: string
+          example: "番剧"
+        views:
+          type: interget
+          example: 7620323
+        img:
+          type: string
+          example: "https://i.loli.net/2018/08/07/5b6951d44bdf3.png"
     ErrorResponse:
       properties:
         code:
           description: HTTP status code alike status inficator
           example: 403
-          type: int
+          type: integer
         message:
-          description: User friendly message to prompt 
+          description: User friendly message to prompt
           example: 您访问的资源需要登录，请登录后重试
           type: string
       required: [code, message]
@@ -36,3 +63,152 @@ servers:
       port: { default: "3000" }
 tags:
   - name: User
+  - name: Video
+
+paths:
+  /userData/{id}:
+    get:
+      description: retrieve basic user data given uid
+      summary: retrieve user data
+      tags: [User]
+      security:
+        - bearerAuth: []
+      parameters:
+        - description: user id
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: retrieve user data successfully
+          content:
+            application/json:
+              examples:
+                success:
+                  summary: Success
+                  value:
+                    ok: true
+                    result:
+                      {
+                        id: 0b01010110011111110001011011001110110111100011,
+                        name: "String Value",
+                        email: "String@Value.Example",
+                        username: "StrVal",
+                        group: 10388,
+                        avatar: "Nullptr",
+                        regtime: (new Date).getTime(),
+                        lastLoginTime: (new Date).getTime(),
+                      }
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    example: 0b01010110011111110001011011001110110111100011
+                  name:
+                    type: string
+                    example: String Value
+                  email:
+                    type: string
+                    example: String@Value.Example
+                  username:
+                    type: string
+                    example: StrVal
+                  group:
+                    type: integer
+                    example: group
+                  avatar:
+                    type: string
+                    example: "nullptr"
+                  regtime:
+                    type: integer
+                    example: 1534739523417
+                  lastlogintime:
+                    type: integer
+                    example: 1534739523499
+                required:
+                  - id
+                  - name
+                  - email
+                  - username
+                  - group
+                  - avatar
+                  - regtime
+                  - lastlogintime
+                type: object
+        "403":
+          description: "无访问权限"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /categories:
+    get:
+      description: retrieve video categories
+      summary: retrieve video categories
+      tags: [Video]
+      responses:
+        "200":
+          description: retrieve category data successfully
+          content:
+            application/json:
+              example:
+                code: 200
+                result:
+                  - name: "膜蛤"
+                    childNodes: null
+                  - name: "动漫"
+                    childNodes:
+                      - name: "MMD"
+                        childNodes: null
+                      - name: "番剧"
+                        childNodes: null
+                  - name: "电影"
+                    childNodes: null
+                  - name: "科教"
+                    childNodes:
+                      - name: "纪录片"
+                        childNodes: null
+                  - name: "电视剧"
+                    childNodes: null
+                  - name: "鬼畜"
+                    childNodes:
+                      - name: "音MAD"
+                        childNodes: null
+                  - name: "R18"
+                    childNodes:
+                      - name: "里区"
+                        childNodes: null
+              schema:
+                $ref: "#/components/schemas/VideoCategoryNode"
+  /detail/{id}:
+    get:
+      description: retrieve video categories
+      summary: retrieve video categories
+      tags: [Video]
+      parameters:
+        - description: video id
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: retrieve category data successfully
+          content:
+            application/json:
+              example:
+                code: 200
+                result:
+                  {
+                    id: 1000111101,
+                    title: "末日时在做什么？有没有空？ #12",
+                    category: "番剧",
+                    views: (10 * Math.random()) ** (Math.random() * 10) >> 0,
+                    img: "https://i.loli.net/2018/08/07/5b6951d44bdf3.png",
+                  }
+              schema:
+                $ref: "#/components/schemas/VideoDetail"
