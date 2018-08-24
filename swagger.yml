@@ -19,7 +19,7 @@ components:
     VideoDetail:
       properties:
         id:
-          type: interger
+          type: integer
           example: 1000111101
         title:
           type: string
@@ -28,11 +28,14 @@ components:
           type: string
           example: "番剧"
         views:
-          type: interget
+          type: integer
           example: 7620323
         img:
           type: string
           example: "https://i.loli.net/2018/08/07/5b6951d44bdf3.png"
+        url:
+          type: string
+          example: "https://xb2016-my.sharepoint.com/:v:/g/personal/corps_rbq_show/EQTPeztXSR5JiH9Vod-VuGIB1dM-TvqHoDtTb5tH6mX6YQ?e=yr2hCB&download=1"
     ErrorResponse:
       properties:
         code:
@@ -56,7 +59,7 @@ servers:
     variables:
       basePath:
         default: pre-alpha
-        enum: [pre-alphe]
+        enum: [pre-alpha]
   - description: The development API server
     url: http://localhost:{port}/
     variables:
@@ -97,7 +100,7 @@ paths:
                         email: "String@Value.Example",
                         username: "StrVal",
                         group: 10388,
-                        avatar: "Nullptr",
+                        avatar: "https://en.gravatar.com/userimage/141960096/b94dbe450b293d5fd412dc127c5f7806.png?size=300",
                         regtime: (new Date).getTime(),
                         lastLoginTime: (new Date).getTime(),
                       }
@@ -120,7 +123,7 @@ paths:
                     example: group
                   avatar:
                     type: string
-                    example: "nullptr"
+                    example: "https://en.gravatar.com/userimage/141960096/b94dbe450b293d5fd412dc127c5f7806.png?size=300"
                   regtime:
                     type: integer
                     example: 1534739523417
@@ -209,6 +212,7 @@ paths:
                     category: "番剧",
                     views: (10 * Math.random()) ** (Math.random() * 10) >> 0,
                     img: "https://i.loli.net/2018/08/07/5b6951d44bdf3.png",
+                    url: "https://xb2016-my.sharepoint.com/:v:/g/personal/corps_rbq_show/EQTPeztXSR5JiH9Vod-VuGIB1dM-TvqHoDtTb5tH6mX6YQ?e=yr2hCB&download=1"
                   }
               schema:
                 $ref: "#/components/schemas/VideoDetail"
