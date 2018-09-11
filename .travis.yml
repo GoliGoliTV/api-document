@@ -8,8 +8,10 @@ cache:
 
 before_script:
   - npm install -g swagger-cli
+  - npm install -g yaml-lint
 
 script:
+  - yamllint swagger.yml
   - swagger-cli validate swagger.yml
 
 notifications:
