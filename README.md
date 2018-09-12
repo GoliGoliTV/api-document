@@ -1,5 +1,8 @@
 # GoliGoli tv restful API document
 
+[![Build Status](https://travis-ci.org/GoliGoliTV/api-document.svg?branch=master)](https://travis-ci.org/GoliGoliTV/api-document)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 GoliGoli tv restful API document
 [Github Pages](https://goligolitv.github.io/api-document/)
 
