@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/GoliGoliTV/api-document.svg?branch=master)](https://travis-ci.org/GoliGoliTV/api-document)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
 GoliGoli tv restful API document
 [Github Pages](https://goligolitv.github.io/api-document/)
