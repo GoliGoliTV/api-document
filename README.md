@@ -7,6 +7,8 @@
 GoliGoli tv restful API document
 [Github Pages](https://goligolitv.github.io/api-document/)
 
+GUI tool: [OpenAPI GUI](https://mermade.github.io/openapi-gui/)
+
 ## Discussion
 
 It's recommended to discuss api related questions on GitHub issues.
